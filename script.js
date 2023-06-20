@@ -1,8 +1,10 @@
 let circularProgressBar = document.querySelector("#circularProgressBar"); //ring
 let progressValue = document.querySelector("#progressValue");
-let workLabel = document.querySelector("#workLabel");
-let shortBreakLabel = document.querySelector("#shortBreakLabel");
-let longBreakLabel = document.querySelector("#longBreakLabel");
+
+let buttonLeft = document.querySelector("#buttonLeft");
+let buttonRight =  document.querySelector("#buttonRight");
+let buttonLabel = document.querySelector("#buttonLabel");
+
 let playButton = document.querySelector('#playButton');
 let pauseButton = document.querySelector('#pauseButton');
 let resetButton = document.querySelector('#resetButton');
@@ -13,12 +15,9 @@ let resetButton = document.querySelector('#resetButton');
 let workTime = 1500; // 25min
 let shortBreakTime = 300; // 5min
 let longBreakTime = 900; // 15min
-let timerType_work = 'work';
-let timerType_shortBreak = 'shortBreak';
-let timerType_longBreak = 'longBreak';
 
 let timerInterval;
-let currentTimerType = timerType_work;
+let currentTimerType = "work"
 let currentTimerValue = workTime;
 let visualRingProgress = 360 / currentTimerValue;
 
@@ -90,32 +89,54 @@ function resetTimer()
     //stop audio
 }
 
-function lightTheLabel() 
+function choseTimerMode() 
 {
     // console.log('before click type');
     // console.log(currentTimerType);
-    workLabel.addEventListener('click', () => {
-        currentTimerType = "work";
-        // console.log('after click type');
-        // console.log(currentTimerType);
+    buttonLeft.addEventListener('click', () => {
+        switch(currentTimerType)
+        {
+            case "work":
+                currentTimerType = "longBreak";
+                buttonLabel.innerHTML = "long_break";
+                break;
+            case "shortBreak":
+                currentTimerType = "work";
+                buttonLabel.innerHTML = "work";
+                break;
+            case "longBreak":
+                currentTimerType = "shortBreak";
+                buttonLabel.innerHTML = "short_break";
+                break;
+            default:
+                console.log("switch case didn't work... T-T");
+        }
         resetTimer();
     });
-    shortBreakLabel.addEventListener('click', () => {
-        currentTimerType = "shortBreak";
-        // console.log('after click type');
-        // console.log(currentTimerType);
-        resetTimer();
-    });
-    longBreakLabel.addEventListener('click', () => {
-        currentTimerType = "longBreak";
-        // console.log('after click type');
-        // console.log(currentTimerType);
+    buttonRight.addEventListener('click', () => {
+        switch(currentTimerType)
+        {
+            case "work":
+                currentTimerType = "shortBreak";
+                buttonLabel.innerHTML = "short_break";
+                break;
+            case "shortBreak":
+                currentTimerType = "longBreak";
+                buttonLabel.innerHTML = "long_break";
+                break;
+            case "longBreak":
+                currentTimerType = "work";
+                buttonLabel.innerHTML = "work";
+                break;
+            default:
+                console.log("switch case didn't work... T-T");
+        }
         resetTimer();
     });
 }
 
 // **** execution ****
-lightTheLabel();
+choseTimerMode();
 playButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
