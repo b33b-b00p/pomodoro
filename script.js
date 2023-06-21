@@ -44,6 +44,10 @@ function decrementTimer()
 
 function startTimer() 
 {
+    if(currentTimerValue === 0)
+    {
+        resetTimer();
+    }
     timerInterval = setInterval(decrementTimer, 1000);
     playButton.style.display = "none";
     pauseButton.style.display = "block";
