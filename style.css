@@ -1,0 +1,273 @@
+/* colors
+red: #f51b1b
+darkred: #cc1717
+cyan: #00ffff
+green: #07eb10
+black: #000000
+white: #ffffff 
+grey: #616161
+darkgrey: #06182c
+*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Mulish&family=Overpass&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Mulish', 'Manrope', 'Overpass', sans-serif;
+    /* font-size: 1.4em; */
+    /* font-size: 1vw; */
+}
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    padding: 5% 2%;
+}
+#timerContainer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #06182c;
+    box-shadow: #f51b1b 0px 0px 24px 12px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset;
+    width: min-content;
+    /* width: 50%; */
+    height: min-content;
+    padding: 2em 1.8em 3.5em;
+    border-radius: 20px;
+    /* row-gap: 2em; */
+    /* margin: 10px auto 0 auto; */
+}
+/**** work/break labels ****/
+#labelContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button {
+    /* background-color: #616161; */
+    background-color: #f51b1b;
+    cursor: pointer;
+    /* padding: 0 2em; */
+    border: 0;
+    width: fit-content;
+}
+button:active {
+    background-color: #cc1717;
+}
+#buttonLeft {
+    border-radius: 11px 0px 0px 11px;
+}
+#buttonRight {
+    border-radius: 0px 11px 11px 0px;
+}
+#buttonLeft svg,
+#buttonRight svg {
+    fill: black;
+    width: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#buttonLeft svg {
+    transform: rotate(180deg);
+}
+#arrowLeft {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+#arrowRight {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+/* #workLabel.active {
+    opacity: 1;
+    color: yellow;
+} */
+#buttonLabel {
+    /* border: 5px solid red; */
+    /* padding: 10px 20px; */
+    background-color: black;
+    color: white;
+    /* font-size: 23px; */
+    /* font-size: 1.4vw; */
+    /* font-size: 1.7em; */
+    font-size: max(1.7em, 1.4vw);
+    /* border-radius: 16px; */
+    /* padding: 0.1em 0; */
+    width: 10vw;
+    max-width: 7.5em;
+    text-align: center;
+    /* border: 0.1em solid #616161; */
+    border: 0.1em solid #f51b1b;
+}
+/* #shortBreakLabel.active {
+    opacity: 1;
+    color: purple;
+}
+#shortBreakLabel {
+    border: 5px solid cyan;
+    padding: 10px 20px;
+    background-color: darkcyan;
+    color: white;
+    font-size: 25px;
+    border-radius: 16px;
+    text-wrap: nowrap;
+}
+#longBreakLabel.active {
+    opacity: 1;
+    color: orange;
+}
+#longBreakLabel {
+    border: 5px solid green;
+    padding: 10px 20px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 25px;
+    border-radius: 16px;
+    text-wrap: nowrap;
+} */
+/**** timer ****/
+#clockContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* padding: 30px; */
+    padding: 1.5em 0 2.5em 0;
+}
+#circularProgressBar {
+    /* height: 180px; */
+    /* width: 180px; */
+    height: 15em;
+    width: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(#616161 360deg, #f51b1b 0deg);
+    border-radius: 50%;
+    animation-name: none;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    transition: all ease;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#progressBarInner {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    border-radius: 50%;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+#progressValue {
+    color: white;
+    font-weight: bold;
+    /* font-size: 40px; */
+    /* font-size: 9.6vw; */
+    font-size: 4em;
+}
+#progressBarInner div {
+    /* color: white; */
+    /* font-weight: bold; */
+    /* font-size: 40px; */
+    /* font-size: 9.6vw; */
+}
+/**** play/pause, reset buttons ****/
+#buttonPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1vw;
+    width: min-content;
+    /* height: 100%; */
+    background-color: #f51b1b;
+    border: 4px solid #f51b1b;
+    border-radius: 50px;
+    padding: 0.1em 0.9em;
+    /* padding: 0.3vh 1vw; */
+}
+.button {
+    /* width: 4vw; */
+    width: 4em;
+    fill: #000000;
+}
+#playButton {
+    cursor: pointer;
+}
+#pauseButton {
+    cursor: pointer;
+    display: none;
+}
+#resetButton {
+    cursor: pointer;
+}
+
+/**** animations ****/
+@keyframes pulseWork {
+    0% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 #f51b1b;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+    }
+    100% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+    }
+}
+@keyframes pulseShortBreak {
+    0% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 #00ffff;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+    }
+    100% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+    }
+}
+@keyframes pulseLongBreak {
+    0% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 #07eb10;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+    }
+    100% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+    }
+}
