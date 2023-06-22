@@ -341,4 +341,12 @@ playButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 todoInputButton.addEventListener('click', addTask);
+todoInputField.addEventListener('keypress', function(event){
+    if(event.key === "Enter")
+    {
+        event.preventDefault();
+        addTask();
+    }
+});
+
 // completeOrRemoveTask();
