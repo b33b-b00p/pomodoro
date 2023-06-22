@@ -240,6 +240,7 @@ button {
     box-shadow: #f51b1b 0px 0px 24px 12px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset;
     width: fit-content;
     height: fit-content;
+    transition: all 400ms;
 }
 #todoList {
     display: flex;
@@ -262,6 +263,7 @@ button {
     border: 0.1em solid #f51b1b;
     background-color: #000000;
     color: #ffffff;
+    transition: border 400ms;
 }
 #todoInputButton {
     border-radius: 0px 6px 6px 0px;
@@ -288,6 +290,7 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    transition: all 400ms;
 }
 /* label {
     display: flex;

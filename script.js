@@ -153,6 +153,7 @@ function changeColorScheme()
     switch(currentTimerType)
     {
         case "work":
+            //timer
             timerContainer.style.boxShadow = "#f51b1b 0px 0px 24px 12px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset";
             buttonLeft.style.backgroundColor = "#f51b1b";
             buttonRight.style.backgroundColor = "#f51b1b";
@@ -161,8 +162,17 @@ function changeColorScheme()
             buttonContainer.style.border = "4px solid #f51b1b";
             visualRingProgressColor = "#f51b1b";
             pulseAnimationChoice = "pulseWork";
+            //todo list
+            todoContainer.style.boxShadow = "#f51b1b 0px 0px 24px 12px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset";
+            todoInputField.style.border = "0.1em solid #f51b1b";
+            todoInputButton.style.backgroundColor = "#f51b1b";
+            listItemColor = "#f51b1b";
+            listContainer.querySelectorAll('.listItem').forEach(item => {
+                item.style.backgroundColor = "#f51b1b";
+            }); 
             break;
         case "shortBreak":
+            //timer
             timerContainer.style.boxShadow = "#00ffff 0px 0px 24px 12px, #00ffff 0px 4px 6px -1px, #00ffff 0px 1px 0px inset";
             buttonLeft.style.backgroundColor = "#00ffff";
             buttonRight.style.backgroundColor = "#00ffff";
@@ -171,8 +181,17 @@ function changeColorScheme()
             buttonContainer.style.border = "4px solid #00ffff";
             visualRingProgressColor = "#00ffff";
             pulseAnimationChoice = "pulseShortBreak";
+            //todo list
+            todoContainer.style.boxShadow = "#00ffff 0px 0px 24px 12px, #00ffff 0px 4px 6px -1px, #00ffff 0px 1px 0px inset";
+            todoInputField.style.border = "0.1em solid #00ffff";
+            todoInputButton.style.backgroundColor = "#00ffff";
+            listItemColor = "#00ffff";
+            listContainer.querySelectorAll('.listItem').forEach(item => {
+                item.style.backgroundColor = "#00ffff";
+            }); 
             break;
         case "longBreak":
+            //timer
             timerContainer.style.boxShadow = "#07eb10 0px 0px 24px 12px, #07eb10 0px 4px 6px -1px, #07eb10 0px 1px 0px inset";
             buttonLeft.style.backgroundColor = "#07eb10";
             buttonRight.style.backgroundColor = "#07eb10";
@@ -181,6 +200,14 @@ function changeColorScheme()
             buttonContainer.style.border = "4px solid #07eb10";
             visualRingProgressColor = "#07eb10";
             pulseAnimationChoice = "pulseLongBreak";
+            //todo list
+            todoContainer.style.boxShadow = "#07eb10 0px 0px 24px 12px, #07eb10 0px 4px 6px -1px, #07eb10 0px 1px 0px inset";
+            todoInputField.style.border = "0.1em solid #07eb10";
+            todoInputButton.style.backgroundColor = "#07eb10";
+            listItemColor = "#07eb10";
+            listContainer.querySelectorAll('.listItem').forEach(item => {
+                item.style.backgroundColor = "#07eb10";
+            }); 
             break;
         default:
             console.log("switch case didn't work... T-T");
@@ -195,6 +222,8 @@ let todoInputPanel = document.querySelector("#todoInputPanel");
 let todoInputField = document.querySelector("#todoInputField");
 let todoInputButton = document.querySelector("#todoInputButton");
 let listContainer = document.querySelector("#listContainer");
+
+let listItemColor = "#f51b1b";
 
 function addTask()
 {
@@ -263,6 +292,7 @@ function addTask()
         listContainer.appendChild(li);
         todoInputField.value = '';
 
+        li.style.backgroundColor = listItemColor;
         completeTask(divclass_checkButton, divclass_taskText, pathCheckButton);
         RemoveTask(divclass_removeButton);
     }
