@@ -59,9 +59,9 @@ button {
     width: fit-content;
     transition: all 400ms;
 }
-button:active {
+/* button:active {
     background-color: #cc1717;
-}
+} */
 #buttonLeft {
     border-radius: 11px 0px 0px 11px;
 }
