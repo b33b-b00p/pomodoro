@@ -299,7 +299,10 @@ button {
     justify-content: space-between;
 } */
 .taskText {
-
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 22em;
 }
 .checkListItemButton {
     width: 1.5em;
