@@ -111,8 +111,9 @@ button {
     font-size: max(1.7em, 1.4vw);
     /* border-radius: 16px; */
     /* padding: 0.1em 0; */
-    width: 10vw;
-    max-width: 7.5em;
+    /* width: 10vw; */
+    /* max-width: 7.5em; */
+    width: max(7.5em, 10vw);
     text-align: center;
     /* border: 0.1em solid #616161; */
     border: 0.1em solid #f51b1b;
