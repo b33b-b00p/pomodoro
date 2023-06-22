@@ -187,8 +187,128 @@ function changeColorScheme()
     }
     resetTimer();
 }
+
+// **** todo list ****
+let todoContainer = document.querySelector("#todoContainer");
+let todoList = document.querySelector("#todoList");
+let todoInputPanel = document.querySelector("#todoInputPanel");
+let todoInputField = document.querySelector("#todoInputField");
+let todoInputButton = document.querySelector("#todoInputButton");
+let listContainer = document.querySelector("#listContainer");
+
+function addTask()
+{
+    if(todoInputField.value === '')
+    {
+        alert("write something");
+    }
+    else
+    {
+        let li = document.createElement("li");
+        li.classList.add("listItem");
+        /* rewrite this segment with append child */
+        
+        //create elements
+        let divclass_checkButton = document.createElement('div')
+        let svgCheckButton = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        let pathCheckButton = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        let divclass_taskText = document.createElement('div')
+        let divclass_removeButton = document.createElement('div')
+        let svgremoveButton = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        let pathremoveButton = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        
+        //append elementss
+        li.appendChild(divclass_checkButton);
+        divclass_checkButton.appendChild(svgCheckButton);
+        svgCheckButton.appendChild(pathCheckButton);
+        li.appendChild(divclass_taskText);
+        li.appendChild(divclass_removeButton);
+        divclass_removeButton.appendChild(svgremoveButton);
+        svgremoveButton.appendChild(pathremoveButton);
+        
+
+        // asign classes
+        divclass_checkButton.classList.add("checkListItemButton");
+        divclass_taskText.classList.add("taskText");
+        divclass_removeButton.classList.add("removeListItemButton");
+
+        svgremoveButton.classList.add("removeListItemButton");
+        pathremoveButton.classList.add("removeListItemButton");
+
+        // change attributes and text
+        // svgCheckButton.setAttribute('style', 'width:24px;height:24px');
+        svgCheckButton.setAttribute('viewBox', '0 0 24 24');
+        // pathCheckButton.setAttribute('fill', 'currentColor');
+        pathCheckButton.setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z');
+        divclass_taskText.textContent = todoInputField.value;
+        // svgremoveButton.setAttribute('style', 'width:24px;height:24px');
+        svgremoveButton.setAttribute('viewBox', '0 0 24 24');
+        // pathremoveButton.setAttribute('fill', 'currentColor');
+        pathremoveButton.setAttribute('d', 'M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z');
+
+        
+
+        
+        
+        
+
+        
+        
+        /*li.innerHTML = `
+        <svg class="listItemButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>circle-outline</title><path d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+        <!-- <span class="checkmark"></span> -->
+        ${todoInputField.value}
+        <svg class="listItemRemove"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+        `;*/
+        listContainer.appendChild(li);
+        todoInputField.value = '';
+
+        completeTask(divclass_checkButton, divclass_taskText, pathCheckButton);
+        RemoveTask(divclass_removeButton);
+    }
+}
+function completeTask(checkButton, text, svgPath)
+{
+    checkButton.addEventListener('click', () => {
+        console.log('bye');
+        text.classList.toggle("checked");
+        updateSVG(text, svgPath);
+    })
+}
+function updateSVG(textElement, path)
+{
+    if(textElement.classList.contains('checked'))
+    {
+        path.setAttribute('d', 'M12 5C15.87 5 19 8.13 19 12C19 15.87 15.87 19 12 19C8.13 19 5 15.87 5 12C5 8.13 8.13 5 12 5M12 2C17.5 2 22 6.5 22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2M12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4Z');
+    }
+    else
+    {
+        path.setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z');
+    }
+}
+function RemoveTask(removeButton)
+{
+    removeButton.addEventListener('click', () => {
+        console.log('hi');
+        removeButton.parentElement.remove();
+    })
+    // listContainer.addEventListener('click', function(e){
+    //     console.log(e.target);
+    //     if(e.target.tagName === "SVG")
+    //     {
+    //         e.target.classList.toggle("checked");
+    //         // e.target.parentElement.classList.toggle("checked");
+    //     }
+    //     else if(e.target.className === "removeListItemButton")
+    //     {
+    //         e.target.parentElement.remove();
+    //     }
+    // }, false);
+}
 // **** execution ****
 choseTimerMode();
 playButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
+todoInputButton.addEventListener('click', addTask);
+// completeOrRemoveTask();
