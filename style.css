@@ -203,6 +203,7 @@ button {
     font-weight: bold;
     padding: 0px 1em;
     font-size: max(1.1em, 1vw);
+    color: #000000;
 }
 #listContainer {
     padding-left: 0;
@@ -330,6 +331,9 @@ button {
         justify-content: flex-start;
         font-size: 5.5vw;
     }
+    #todoInputButton {
+        color: #000000;
+    }
 }
 @media (orientation: landscape) and (max-width: 819px) {
     #logo {
@@ -337,5 +341,8 @@ button {
     }
     #container {
         padding: 15% 0 5%;
+    }
+    #todoInputButton {
+        color: #000000;
     }
 }
