@@ -36,7 +36,7 @@ body {
     /* grid-template-columns: 1fr; */
     /* justify-content: center; */
     /* align-items: center; */
-    padding: 1% 0;
+    padding: 3% 0 1%;
 }
 /**** work/break labels ****/
 #timerContainer {
@@ -340,7 +340,38 @@ button {
     text-decoration: line-through;
     text-decoration-thickness: 0.1em;
 }
-
+/**** logo text ****/
+#logo {
+    position: absolute;
+    /* right: 100px; */
+    right: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* column-gap: 0.5em; */
+    /* margin: 40px; */
+    margin: 0vh 2vw;
+    /* margin-top: 70px; */
+    margin-top: 2vh;
+    font-size: 1vw;
+}
+#logoImg {
+    height: 0.9em;
+    margin-right: 0.5em;
+}
+#logo div {
+    color: #ffffff;
+    font-weight: bold;
+}
+#triangleImg {
+    transform: rotate(90deg);
+    height: 0.6em;
+    margin: 0 0.1em;
+}
+#logo div:last-child {
+    color: #f51b1b;
+}
 /**** animations ****/
 @keyframes pulseWork {
     0% {
@@ -393,6 +424,20 @@ button {
         margin-top: 0;
     }
     #container {
-        padding: 10% 0;
+        padding: 21% 0;
+    }
+    #logo {
+        left: 2vw;
+        margin-top: 2.5vh;
+        justify-content: flex-start;
+        font-size: 5.5vw;
+    }
+}
+@media (orientation: landscape) and (max-width: 819px) {
+    #logo {
+        margin-top: 4vh;
+    }
+    #container {
+        padding: 15% 0 5%;
     }
 }
