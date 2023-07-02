@@ -234,7 +234,7 @@ function addTask()
         let divclass_checkButton = document.createElement('div')
         let svgCheckButton = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         let pathCheckButton = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        let divclass_taskText = document.createElement('div')
+        let inputclass_taskText = document.createElement('input')
         let divclass_removeButton = document.createElement('div')
         let svgremoveButton = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         let pathremoveButton = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -243,7 +243,7 @@ function addTask()
         li.appendChild(divclass_checkButton);
         divclass_checkButton.appendChild(svgCheckButton);
         svgCheckButton.appendChild(pathCheckButton);
-        li.appendChild(divclass_taskText);
+        li.appendChild(inputclass_taskText);
         li.appendChild(divclass_removeButton);
         divclass_removeButton.appendChild(svgremoveButton);
         svgremoveButton.appendChild(pathremoveButton);
@@ -251,7 +251,7 @@ function addTask()
 
         // asign classes
         divclass_checkButton.classList.add("checkListItemButton");
-        divclass_taskText.classList.add("taskText");
+        inputclass_taskText.classList.add("taskText");
         divclass_removeButton.classList.add("removeListItemButton");
 
         svgremoveButton.classList.add("removeListItemButton");
@@ -260,7 +260,8 @@ function addTask()
         // change attributes and text
         svgCheckButton.setAttribute('viewBox', '0 0 24 24');
         pathCheckButton.setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z');
-        divclass_taskText.textContent = todoInputField.value;
+        inputclass_taskText.value = todoInputField.value;
+        inputclass_taskText.type = "text";
         svgremoveButton.setAttribute('viewBox', '0 0 24 24');
         pathremoveButton.setAttribute('d', 'M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z');
 
@@ -268,14 +269,14 @@ function addTask()
         todoInputField.value = '';
 
         li.style.backgroundColor = listItemColor;
-        completeTask(divclass_checkButton, divclass_taskText, pathCheckButton);
-        RemoveTask(divclass_removeButton);
+        completeTask(divclass_checkButton, inputclass_taskText, pathCheckButton);
+        removeTask(divclass_removeButton);
     }
 }
 function completeTask(checkButton, text, svgPath)
 {
     checkButton.addEventListener('click', () => {
-        console.log('bye');
+        // console.log('bye');
         text.classList.toggle("checked");
         updateSVG(text, svgPath);
     })
@@ -291,10 +292,10 @@ function updateSVG(textElement, path)
         path.setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z');
     }
 }
-function RemoveTask(removeButton)
+function removeTask(removeButton)
 {
     removeButton.addEventListener('click', () => {
-        console.log('hi');
+        // console.log('hi');
         removeButton.parentElement.remove();
     })
 }

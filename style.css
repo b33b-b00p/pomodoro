@@ -198,6 +198,9 @@ button {
     width: -webkit-fill-available;
     min-width: 19vw;
 }
+#todoInputField:focus {
+    outline: none;
+}
 #todoInputButton {
     border-radius: 0px 6px 6px 0px;
     font-weight: bold;
@@ -230,6 +233,18 @@ button {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 15vw;
+}
+input.taskText {
+    background: inherit;
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: center;
+}
+input.taskText:focus {
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
 }
 .checkListItemButton {
     width: 1.5em;
