@@ -20,7 +20,7 @@ body {
     overflow-x:hidden;
 }
 #container {
-    padding: 3% 0 1%;
+    padding: 2.1% 0 1%;
 }
 /**** work/break labels ****/
 #timerContainer {
@@ -56,7 +56,7 @@ button {
 }
 #buttonLeft svg,
 #buttonRight svg {
-    fill: black;
+    fill: #000000;
     width: 2em;
     display: flex;
     justify-content: center;
@@ -66,7 +66,7 @@ button {
     transform: rotate(180deg);
 }
 #arrowLeft {
-    border: solid black;
+    border: solid #000000;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -75,7 +75,7 @@ button {
   }
 
 #arrowRight {
-    border: solid black;
+    border: solid #000000;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -83,8 +83,8 @@ button {
     -webkit-transform: rotate(-45deg);
 }
 #buttonLabel {
-    background-color: black;
-    color: white;
+    background-color: #000000;
+    color: #ffffff;
     font-size: max(1.7em, 1.4vw);
     width: max(7.5em, 10vw);
     text-align: center;
@@ -126,7 +126,7 @@ button {
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 #progressValue {
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     font-size: 4em;
 }
@@ -258,7 +258,7 @@ input.taskText:focus {
     text-decoration-thickness: 0.1em;
 }
 /**** logo text ****/
-#logo {
+/* #logo {
     position: absolute;
     right: 3vw;
     display: flex;
@@ -284,7 +284,48 @@ input.taskText:focus {
 }
 #logo div:last-child {
     color: #f51b1b;
+} */
+/**** header ****/
+#header {
+    display: flex;
+    flex-direction: row;
+    background-color: #06182c;
+    width: 100%;
+    height: fit-content;
+    padding: 3vh 0 2vh;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 2px 2px 3px #06182c;
 }
+#logo {
+    font-size: max(2.1em, 1.8vw);
+    padding-left: 2.7vw;
+    /* padding-left: 1.5em; */
+    color: #f51b1b;
+}
+#logo span {
+    font-weight: bold;
+    color: #ffffff;
+}
+#settingsButton {
+    width: 2.9em;
+    padding-right: 2.5vw;
+    /* padding-right: 2em; */
+}
+#settingsButton svg {
+    fill: #f51b1b;
+    fill: #000000;
+    /* box-shadow: 3px 3px 10px #f51b1b, -3px -3px 10px #f51b1b, 3px -3px 10px #f51b1b, -3px 3px 10px #f51b1b; */
+    /* box-shadow: #f51b1b 0px 0px 24px 12px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset; */
+    box-shadow: #f51b1b 0px 0px 7px 6px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset;
+    border-radius: 50%;
+    background-color: #f51b1b;
+    /* transform: rotate(0deg);
+    transition: all 800ms; */
+}
+/* #settingsButton svg:hover {
+    transform: rotate(-70deg);
+} */
 /**** animations ****/
 @keyframes pulseWork {
     0% {
@@ -337,24 +378,35 @@ input.taskText:focus {
         margin-top: 0;
     }
     #container {
-        padding: 21% 0;
+        padding: 10% 0;
     }
     #logo {
-        left: 2vw;
-        margin-top: 2.5vh;
-        justify-content: flex-start;
-        font-size: 5.5vw;
+        /* font-size: max(2.1em, 1.8vw);
+        padding-left: 2.7vw; */
+        font-size: max(1.9em, 1.7vw);
+        /* padding-left: 3vw; */
+        padding-left: 0.5em;
+    }
+    #settingsButton {
+        /* padding-right: 2.5vw; */
+        padding-right: 1.5em;
     }
     #todoInputButton {
         color: #000000;
     }
 }
-@media (orientation: landscape) and (max-width: 819px) {
-    #logo {
-        margin-top: 4vh;
+@media (orientation: landscape) and (max-width: 899px) {
+    #header {
+        padding: 3vh 0 2vh;
     }
     #container {
-        padding: 15% 0 5%;
+        padding: 5.5% 0 5%;
+    }
+    #logo {
+        padding-left: 1em;
+    }
+    #settingsButton {
+        padding-right: 2.5em;
     }
     #todoInputButton {
         color: #000000;
