@@ -363,7 +363,7 @@ input.taskText:focus {
 .formHeader {
     margin-bottom: 10px;
     font-size: 1.7em;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 #workTimeContainer,
 #shortBreakContainer, 
@@ -512,6 +512,9 @@ input.taskText:focus {
     #todoInputButton {
         color: #000000;
     }
+    #settingsForm {
+        width: 95%;
+    }
 }
 @media (orientation: landscape) and (max-width: 899px) {
     #header {
@@ -528,5 +531,9 @@ input.taskText:focus {
     }
     #todoInputButton {
         color: #000000;
+    }
+    #settingsForm {
+        width: 60%;
+        height: 95%;
     }
 }
