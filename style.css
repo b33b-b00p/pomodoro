@@ -391,9 +391,6 @@ input.taskText:focus {
 #longBreakContainer .incrementTimeButton {
     background-color: #07eb10;
 }
-#settingsForm button {
-    
-}
 #confirmButton {
     width: auto;
     padding: 14px 26px;
