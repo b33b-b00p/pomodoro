@@ -536,5 +536,9 @@ input.taskText:focus {
     #settingsForm {
         width: 60%;
         height: 95%;
+        row-gap: 10px;
+    }
+    .formHeader {
+        font-size: 1.4em;
     }
 }
