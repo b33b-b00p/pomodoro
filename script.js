@@ -12,6 +12,8 @@ let playButton = document.querySelector('#playButton');
 let pauseButton = document.querySelector('#pauseButton');
 let resetButton = document.querySelector('#resetButton');
 
+let logo = document.querySelector("#logo");
+
 
 // **** timer values ****
 let workTime = 1500; // 25min
@@ -164,6 +166,13 @@ function changeColorScheme()
             listContainer.querySelectorAll('.listItem').forEach(item => {
                 item.style.backgroundColor = "#f51b1b";
             }); 
+            //header 
+            logo.style.color = "#f51b1b";
+            openSettingsButton.querySelector("svg").style.boxShadow = "#f51b1b 0px 0px 7px 6px, #f51b1b 0px 4px 6px -1px, #f51b1b 0px 1px 0px inset";
+            openSettingsButton.querySelector("svg").style.backgroundColor = "#f51b1b";
+            //window settings
+            confirmButton.style.backgroundColor = "#f51b1b";
+            closeSettingsButton.querySelector("svg").style.fill = "#f51b1b";
             break;
         case "shortBreak":
             //timer
@@ -183,6 +192,13 @@ function changeColorScheme()
             listContainer.querySelectorAll('.listItem').forEach(item => {
                 item.style.backgroundColor = "#00ffff";
             }); 
+            //header 
+            logo.style.color = "#00ffff";
+            openSettingsButton.querySelector("svg").style.boxShadow = "#00ffff 0px 0px 7px 6px, #00ffff 0px 4px 6px -1px, #00ffff 0px 1px 0px inset";
+            openSettingsButton.querySelector("svg").style.backgroundColor = "#00ffff";
+            //window settings
+            confirmButton.style.backgroundColor = "#00ffff";
+            closeSettingsButton.querySelector("svg").style.fill = "#00ffff";
             break;
         case "longBreak":
             //timer
@@ -202,6 +218,13 @@ function changeColorScheme()
             listContainer.querySelectorAll('.listItem').forEach(item => {
                 item.style.backgroundColor = "#07eb10";
             }); 
+            //header 
+            logo.style.color = "#07eb10";
+            openSettingsButton.querySelector("svg").style.boxShadow = "#07eb10 0px 0px 7px 6px, #07eb10 0px 4px 6px -1px, #07eb10 0px 1px 0px inset";
+            openSettingsButton.querySelector("svg").style.backgroundColor = "#07eb10";
+            //window settings
+            confirmButton.style.backgroundColor = "#07eb10";
+            closeSettingsButton.querySelector("svg").style.fill = "#07eb10";
             break;
         default:
             console.log("switch case didn't work... T-T");
@@ -300,12 +323,128 @@ function removeTask(removeButton)
         removeButton.parentElement.remove();
     })
 }
+// **** settings window ****
+let openSettingsButton = document.querySelector("#settingsButton");
+let closeSettingsButton = document.querySelector("#closeFormButton");
+let settingsBg = document.querySelector("#settingsBg");
+let workTimeContainer = document.querySelector("#workTimeContainer");
+let shortBreakContainer = document.querySelector("#shortBreakContainer");
+let longBreakContainer = document.querySelector("#longBreakContainer");
+let confirmButton = document.querySelector("#confirmButton");
+let new_workTime = workTime;
+let new_shortBreakTime = shortBreakTime;
+let new_longBreakTime = longBreakTime;
+
+function openSettings()
+{
+    openSettingsButton.querySelector("svg").style.transform = 'rotate(-70deg)';
+    setTimeout(() => {
+        settingsBg.style.display = 'flex';
+        
+    }, 300);
+}
+function closeSettings()
+{
+    settingsBg.style.display = 'none';
+    openSettingsButton.querySelector("svg").style.transform = 'rotate(0deg)';
+}
+
+function changeWorkTime()
+{
+    workTimeContainer.querySelector(".decrementTimeButton").addEventListener('click', () => {
+        if(new_workTime >= 300 && new_workTime <= 5400)
+        {
+            new_workTime -= 300;
+            if(new_workTime < 300)
+            {
+                new_workTime = 300;
+            }
+        }
+        workTimeContainer.querySelector("#workTimeButtonLabel").innerText = new_workTime / 60;
+    });
+    workTimeContainer.querySelector(".incrementTimeButton").addEventListener('click', () => {
+        if(new_workTime >= 300 && new_workTime <= 5400)
+        {
+            new_workTime += 300;
+            if(new_workTime > 5400)
+            {
+                new_workTime = 5400;
+            }
+        }
+        workTimeContainer.querySelector("#workTimeButtonLabel").innerText = new_workTime / 60;
+    });
+}
+function changeShortBreakTime()
+{
+    shortBreakContainer.querySelector(".decrementTimeButton").addEventListener('click', () => {
+        if(new_shortBreakTime >= 300 && new_shortBreakTime <= 5400)
+        {
+            new_shortBreakTime -= 300;
+            if(new_shortBreakTime < 300)
+            {
+                new_shortBreakTime = 300;
+            }
+        }
+        shortBreakContainer.querySelector("#shortBreakButtonLabel").innerText = new_shortBreakTime / 60;
+    });
+    shortBreakContainer.querySelector(".incrementTimeButton").addEventListener('click', () => {
+        if(new_shortBreakTime >= 300 && new_shortBreakTime <= 5400)
+        {
+            new_shortBreakTime += 300;
+            if(new_shortBreakTime > 5400)
+            {
+                new_shortBreakTime = 5400;
+            }
+        }
+        shortBreakContainer.querySelector("#shortBreakButtonLabel").innerText = new_shortBreakTime / 60;
+    });
+}
+function changeLongBreakTime()
+{
+    longBreakContainer.querySelector(".decrementTimeButton").addEventListener('click', () => {
+        if(new_longBreakTime >= 300 && new_longBreakTime <= 5400)
+        {
+            new_longBreakTime -= 300;
+            if(new_longBreakTime < 300)
+            {
+                new_longBreakTime = 300;
+            }
+        }
+        longBreakContainer.querySelector("#longBreakButtonLabel").innerText = new_longBreakTime / 60;
+    });
+    longBreakContainer.querySelector(".incrementTimeButton").addEventListener('click', () => {
+        if(new_longBreakTime >= 300 && new_longBreakTime <= 5400)
+        {
+            new_longBreakTime += 300;
+            if(new_longBreakTime > 5400)
+            {
+                new_longBreakTime = 5400;
+            }
+        }
+        longBreakContainer.querySelector("#longBreakButtonLabel").innerText = new_longBreakTime / 60;
+    });
+}
+
+function confirmTimerSettings()
+{
+    workTime = new_workTime;
+    shortBreakTime = new_shortBreakTime;
+    longBreakTime = new_longBreakTime;
+    resetTimer();
+}
 // **** execution ****
 choseTimerMode();
+changeWorkTime();
+changeShortBreakTime();
+changeLongBreakTime();
 playButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 todoInputButton.addEventListener('click', addTask);
+openSettingsButton.addEventListener('click', openSettings);
+closeSettingsButton.addEventListener('click', closeSettings);
+confirmButton.addEventListener('click', confirmTimerSettings);
+confirmButton.addEventListener('click', closeSettings);
 todoInputField.addEventListener('keypress', function(event){
     if(event.key === "Enter")
     {
