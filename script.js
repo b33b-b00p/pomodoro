@@ -14,6 +14,7 @@ let resetButton = document.querySelector('#resetButton');
 
 let logo = document.querySelector("#logo");
 
+const alarm = new Audio('./sounds/pomodoro-alarm.mp3');
 
 // **** timer values ****
 let workTime = 1500; // 25min
@@ -67,6 +68,7 @@ function updateVisualTimer() {
     if(currentTimerValue === 0)
     {
         pauseTimer();
+        alarm.play();
     }
 
     progressValue.textContent = `${createStringNumber(currentTimerValue)}`;
